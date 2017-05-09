@@ -11,10 +11,12 @@ $(function() { // on document ready
     $('#select_list').append(optiontag)
      newList = new List(listTitle)
 
-    $('#lists_display').append(`${newList.title}`)
-    var userList = `<div id = "${listTitle}">Tasks: </div>`
-    $('#lists_display').append(userList)
-    // work on a render method to display out
+    // $('#lists').append(`${newList.title}`)
+    var userList = `<div id = "${listTitle}"><h3>${newList.title}</h3><br> <p id = "${listTitle}-tasks"></p> </div>`
+    $('#lists').append(userList)
+
+    var listTitle = $('#list_title').val(" ")
+
   });
 
   $('#add_task').on('submit', function(event){
@@ -29,15 +31,10 @@ $(function() { // on document ready
        return listName.title === selectList
     })
     let newTask = new Task(descriptionInput, priorityInput, associateList)
-
-    var listTitle = $('#select_list').val()
-    $(`#${listTitle}`).append(descriptionInput)
-    $(`#${listTitle}`).append(priorityInput)
-
-    // let association = `<div id = "${newTask}" ></div>`
-    // $('#description_display').append(descriptionInput)
-
-    //
+    var taskDiv = `<p id = "task-${newTask.id}">Description: ${descriptionInput}<br> Priority: ${priorityInput}<br><br></p>`
+    // var listTitle = $('#select_list').val()
+    // debugger
+    $(`#${associateList.title}-tasks`).append(taskDiv)
 
   })
 

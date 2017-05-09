@@ -11,7 +11,9 @@ class List {
 
 }
 
-// 
+//
 
   List.all = []
 // class property
+
+// event delegation
