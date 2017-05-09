@@ -7,14 +7,13 @@ $(function() { // on document ready
     // let listTitle = event.target.children[1].value
     var listTitle = $('#list_title').val()
     let optiontag = `<option value="${listTitle}" type= text>${listTitle}</option>`
-
     let selectList = $('#select_list').val()
     $('#select_list').append(optiontag)
      newList = new List(listTitle)
 
     $('#lists_display').append(`${newList.title}`)
-
-
+    var userList = `<div id = "${listTitle}">Tasks: </div>`
+    $('#lists_display').append(userList)
     // work on a render method to display out
   });
 
@@ -31,9 +30,11 @@ $(function() { // on document ready
     })
     let newTask = new Task(descriptionInput, priorityInput, associateList)
 
-    // let association = `<div id = "${newTask}" ></div>`
-    $('#lists_display').append(`${descriptionInput}`)
+    var listTitle = $('#select_list').val()
+    $(`#${listTitle}`).append(descriptionInput)
+    $(`#${listTitle}`).append(priorityInput)
 
+    // let association = `<div id = "${newTask}" ></div>`
     // $('#description_display').append(descriptionInput)
 
     //
