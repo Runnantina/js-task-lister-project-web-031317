@@ -12,10 +12,11 @@ $(function() { // on document ready
      newList = new List(listTitle)
 
     // $('#lists').append(`${newList.title}`)
-    var userList = `<div id = "${listTitle}"><h3>${newList.title}</h3><br> <p id = "${listTitle}-tasks"></p> </div>`
+    var userList = `<div id = "${listTitle}"> <h3>${newList.title}</h3><br> <p id = "${listTitle}-tasks"></p><button type="button" id ="delete-list">Remove List</button><br><br> </div>`
     $('#lists').append(userList)
 
-    var listTitle = $('#list_title').val(" ")
+    var listTitle = $('#list_title').val("")
+
 
   });
 
@@ -25,18 +26,34 @@ $(function() { // on document ready
     let selectList = $('#select_list').val()
 
 
-    let descriptionInput = $('#task_description').val()
-    let priorityInput = $('#task_priority').val()
-    let associateList = List.all.find(function(listName){
+    var descriptionInput = $('#task_description').val()
+    var priorityInput = $('#task_priority').val()
+    var associateList = List.all.find(function(listName){
        return listName.title === selectList
     })
     let newTask = new Task(descriptionInput, priorityInput, associateList)
-    var taskDiv = `<p id = "task-${newTask.id}">Description: ${descriptionInput}<br> Priority: ${priorityInput}<br><br></p>`
-    // var listTitle = $('#select_list').val()
-    // debugger
+    var taskDiv = `<p id = "task-${newTask.id}">Description: ${descriptionInput}<br> Priority: ${priorityInput}<br><br><button type="button" id ="delete-button">Delete</button><br><br></p>`
+
     $(`#${associateList.title}-tasks`).append(taskDiv)
 
+    $('#task_description').val("")
+    $('#task_priority').val("")
+
+
+    // have to delete that instance of task
+
   })
+
+  $('body').on('click', '#delete-button', function(){
+    this.parentElement.remove()
+  })
+
+  $('body').on('click', '#delete-list', function(){
+    this.parentElement.remove()
+  })
+
+
+
 
 
 
@@ -45,3 +62,5 @@ $(function() { // on document ready
   // tasksController = new TasksController();
   // tasksController.init();
 });
+
+// rails new projectname --api -T --database=postgresql
