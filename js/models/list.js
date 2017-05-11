@@ -9,25 +9,26 @@ class List {
 
   }
 
-  static all(){
+  static getAll(){
       return $.ajax({
         method: 'GET',
         url: 'http://localhost:3000/api/v1/lists',
 
       })
       }
-  
+
 
   static create(params){
       return $.ajax({
         url: 'http://localhost:3000/api/v1/lists',
         method: 'POST',
-        data: params
+        data: params// pass in {key: "value", key: "value"}
       })
     }
 
 }
 
+List.all = []
 
 
 // class property
