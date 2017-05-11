@@ -12,13 +12,15 @@ class List {
   static all(){
       return $.ajax({
         method: 'GET',
-        // url: 'http://localhost:3000/api/v1/animals'
+        url: 'http://localhost:3000/api/v1/lists',
+
       })
-    }
+      }
+  
 
   static create(params){
       return $.ajax({
-        // url: 'http://localhost:3000/api/v1/animals',
+        url: 'http://localhost:3000/api/v1/lists',
         method: 'POST',
         data: params
       })
@@ -26,9 +28,8 @@ class List {
 
 }
 
-//
 
-  List.all = []
+
 // class property
 
 // event delegation
