@@ -6,11 +6,13 @@ class Api::V1::ListsController < ApplicationController
   end
 
   def create
-    list = List.find_or_create_by(title: params[:list_title])
+    # binding.pry
+    list = List.find_or_create_by(title: params[:title])
+    render json: list
   end
 
   def destroy
-    list = List.find(title: params[:list_title])
+    list = List.find(title: params[:title])
     list.destroy
     render json: {delete: "#{list.id}"}
   end
