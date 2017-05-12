@@ -1,5 +1,9 @@
 class Api::V1::ListsController < ApplicationController
 
+  def show
+    render json: {animals: ['orca', 'dolphin']}
+  end
+
   def index
     lists = List.all
     render json: lists
@@ -12,8 +16,9 @@ class Api::V1::ListsController < ApplicationController
   end
 
   def destroy
-    list = List.find(title: params[:title])
+    list = List.find(params[:id])
     list.destroy
     render json: {delete: "#{list.id}"}
+    # render json: {animals: ['orca', 'dolphin']}
   end
 end
